@@ -3,6 +3,7 @@ package com.mistdays.taskmanagementsystem.controller;
 import com.mistdays.taskmanagementsystem.entity.User;
 import com.mistdays.taskmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -17,6 +18,13 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
+    }
+
+    @GetMapping
+    public List<User> getAllUsers() {
+
+        return userService.findAllUsers();
+
     }
 
 }

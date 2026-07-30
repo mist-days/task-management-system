@@ -5,6 +5,7 @@ import com.mistdays.taskmanagementsystem.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -20,5 +21,11 @@ public class UserService {
         user.setCreatedAt(LocalDateTime.now());
 
         return userRepository.save(user);
+    }
+
+    public List<User> findAllUsers() {
+
+        return userRepository.findAll();
+
     }
 }
