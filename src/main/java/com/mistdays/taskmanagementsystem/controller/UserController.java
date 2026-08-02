@@ -4,6 +4,7 @@ import com.mistdays.taskmanagementsystem.entity.User;
 import com.mistdays.taskmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/users")
@@ -22,9 +23,13 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers() {
-
         return userService.findAllUsers();
+    }
 
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return userService.findUserById(id)
+                .orElseThrow();
     }
 
 }
