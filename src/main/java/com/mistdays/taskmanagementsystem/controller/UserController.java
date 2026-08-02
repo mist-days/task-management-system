@@ -5,6 +5,7 @@ import com.mistdays.taskmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.mistdays.taskmanagementsystem.exception.UserNotFoundException;
 
 @RestController
 @RequestMapping("/users")
@@ -28,8 +29,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
+
         return userService.findUserById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
+
+
 
 }
