@@ -19,26 +19,20 @@ public class UserService {
     }
 
     public User createUser(User user) {
-
         user.setCreatedAt(LocalDateTime.now());
-
         return userRepository.save(user);
     }
 
     public List<User> findAllUsers() {
-
         return userRepository.findAll();
-
     }
 
     public User findUserById(Long id) {
-
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     public User updateUser(Long id, User updatedUser) {
-
         User existingUser = findUserById(id);
 
         existingUser.setUsername(updatedUser.getUsername());
@@ -46,5 +40,10 @@ public class UserService {
         existingUser.setPassword(updatedUser.getPassword());
 
         return userRepository.save(existingUser);
+    }
+
+    public void deleteUser(Long id) {
+        User existingUser = findUserById(id);
+        userRepository.delete(existingUser);
     }
 }
