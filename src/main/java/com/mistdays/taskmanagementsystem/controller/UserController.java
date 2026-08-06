@@ -3,11 +3,14 @@ package com.mistdays.taskmanagementsystem.controller;
 import com.mistdays.taskmanagementsystem.entity.User;
 import com.mistdays.taskmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpStatus;
 import com.mistdays.taskmanagementsystem.dto.UserCreateRequest;
 import com.mistdays.taskmanagementsystem.dto.UserResponse;
+import com.mistdays.taskmanagementsystem.dto.UserUpdateRequest;
 
 @RestController
 @RequestMapping("/users")
@@ -41,18 +44,46 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAllUsers();
+    public List<UserResponse> getAllUsers() {
+        List<User> users = userService.findAllUsers();
+        List<UserResponse> responses = new ArrayList<>();
+        for (User user : users){
+            UserResponse response = new UserResponse();
+            response.setId(user.getId());
+            response.setUsername(user.getUsername());
+            response.setEmail(user.getEmail());
+
+            responses.add(response);
+        }
+        return responses;
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.findUserById(id);
+    public UserResponse getUserById(@PathVariable Long id) {
+
+        User user = userService.findUserById(id);
+        UserResponse response = new UserResponse();
+        response.setId(user.getId());
+        response.setUsername(user.getUsername());
+        response.setEmail(user.getEmail());
+
+        return response;
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    public UserResponse updateUser(@PathVariable Long id, @RequestBody UserUpdateRequest request) {
+        User existingUser = userService.findUserById(id);
+        existingUser.setPassword(request.getPassword());
+        existingUser.setUsername(request.getUsername());
+        existingUser.setEmail(request.getEmail());
+        User updatedUser = userService.updateUser(id, existingUser);
+
+        UserResponse response = new UserResponse();
+        response.setId(updatedUser.getId());
+        response.setUsername(updatedUser.getUsername());
+        response.setEmail(updatedUser.getEmail());
+
+        return response;
     }
 
     @DeleteMapping("/{id}")
