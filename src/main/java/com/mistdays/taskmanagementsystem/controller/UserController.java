@@ -1,12 +1,13 @@
 package com.mistdays.taskmanagementsystem.controller;
 
 import com.mistdays.taskmanagementsystem.entity.User;
+import com.mistdays.taskmanagementsystem.mapper.UserMapper;
 import com.mistdays.taskmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.http.HttpStatus;
 import com.mistdays.taskmanagementsystem.dto.UserCreateRequest;
 import com.mistdays.taskmanagementsystem.dto.UserResponse;
@@ -33,12 +34,7 @@ public class UserController {
         user.setPassword(request.getPassword());
         User savedUser = userService.createUser(user);
 
-        UserResponse response = new UserResponse();
-        response.setId(savedUser.getId());
-        response.setUsername(savedUser.getUsername());
-        response.setEmail(savedUser.getEmail());
-        return response;
-
+        return UserMapper.toResponse(savedUser);
     }
 
     @GetMapping
@@ -46,12 +42,7 @@ public class UserController {
         List<User> users = userService.findAllUsers();
         List<UserResponse> responses = new ArrayList<>();
         for (User user : users){
-            UserResponse response = new UserResponse();
-            response.setId(user.getId());
-            response.setUsername(user.getUsername());
-            response.setEmail(user.getEmail());
-
-            responses.add(response);
+            responses.add(UserMapper.toResponse(user));
         }
         return responses;
     }
@@ -60,24 +51,15 @@ public class UserController {
     public UserResponse getUserById(@PathVariable Long id) {
 
         User user = userService.findUserById(id);
-        UserResponse response = new UserResponse();
-        response.setId(user.getId());
-        response.setUsername(user.getUsername());
-        response.setEmail(user.getEmail());
 
-        return response;
+        return UserMapper.toResponse(user);
     }
 
     @PutMapping("/{id}")
     public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
         User updatedUser = userService.updateUser(id, request);
 
-        UserResponse response = new UserResponse();
-        response.setId(updatedUser.getId());
-        response.setUsername(updatedUser.getUsername());
-        response.setEmail(updatedUser.getEmail());
-
-        return response;
+        return UserMapper.toResponse(updatedUser);
     }
 
     @DeleteMapping("/{id}")
@@ -85,7 +67,4 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
-
-
-
 }
