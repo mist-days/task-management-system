@@ -12,6 +12,8 @@ import com.mistdays.taskmanagementsystem.dto.UserCreateRequest;
 import com.mistdays.taskmanagementsystem.dto.UserResponse;
 import com.mistdays.taskmanagementsystem.dto.UserUpdateRequest;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -22,12 +24,8 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @PostMapping
-//    public User createUser(@RequestBody User user) {
-//        return userService.createUser(user);
-//    }
     @PostMapping
-    public UserResponse createUser(@RequestBody UserCreateRequest request) {
+    public UserResponse createUser(@Valid @RequestBody UserCreateRequest request) {
 
         User user = new User();
         user.setUsername(request.getUsername());
@@ -71,11 +69,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponse updateUser(@PathVariable Long id, @RequestBody UserUpdateRequest request) {
+    public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
         User existingUser = userService.findUserById(id);
         existingUser.setPassword(request.getPassword());
         existingUser.setUsername(request.getUsername());
         existingUser.setEmail(request.getEmail());
+
         User updatedUser = userService.updateUser(id, existingUser);
 
         UserResponse response = new UserResponse();
