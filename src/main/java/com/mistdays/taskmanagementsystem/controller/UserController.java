@@ -70,12 +70,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
-        User existingUser = userService.findUserById(id);
-        existingUser.setPassword(request.getPassword());
-        existingUser.setUsername(request.getUsername());
-        existingUser.setEmail(request.getEmail());
-
-        User updatedUser = userService.updateUser(id, existingUser);
+        User updatedUser = userService.updateUser(id, request);
 
         UserResponse response = new UserResponse();
         response.setId(updatedUser.getId());
