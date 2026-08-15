@@ -4,7 +4,7 @@ import com.mistdays.taskmanagementsystem.dto.TaskResponse;
 import com.mistdays.taskmanagementsystem.entity.Task;
 
 public class TaskMapper {
-    public static TaskResponse toResponse(Task task){
+    public static TaskResponse toResponse(Task task) {
 
         TaskResponse response = new TaskResponse();
 
