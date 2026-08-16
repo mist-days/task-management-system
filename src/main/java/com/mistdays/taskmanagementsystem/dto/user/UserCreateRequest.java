@@ -1,10 +1,10 @@
-package com.mistdays.taskmanagementsystem.dto;
+package com.mistdays.taskmanagementsystem.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class UserUpdateRequest {
+public class UserCreateRequest {
 
     @NotBlank(message = "Username must not be blank")
     private String username;
@@ -17,7 +17,7 @@ public class UserUpdateRequest {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    public UserUpdateRequest() {
+    public UserCreateRequest() {
     }
 
     public String getUsername() {

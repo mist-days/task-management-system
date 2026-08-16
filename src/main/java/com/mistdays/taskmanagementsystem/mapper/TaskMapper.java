@@ -1,6 +1,6 @@
 package com.mistdays.taskmanagementsystem.mapper;
 
-import com.mistdays.taskmanagementsystem.dto.TaskResponse;
+import com.mistdays.taskmanagementsystem.dto.task.TaskResponse;
 import com.mistdays.taskmanagementsystem.entity.Task;
 
 public class TaskMapper {

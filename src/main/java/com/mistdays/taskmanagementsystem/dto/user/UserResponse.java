@@ -1,4 +1,4 @@
-package com.mistdays.taskmanagementsystem.dto;
+package com.mistdays.taskmanagementsystem.dto.user;
 
 public class UserResponse {
 

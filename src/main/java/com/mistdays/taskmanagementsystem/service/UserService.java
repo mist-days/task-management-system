@@ -1,6 +1,6 @@
 package com.mistdays.taskmanagementsystem.service;
 
-import com.mistdays.taskmanagementsystem.dto.UserUpdateRequest;
+import com.mistdays.taskmanagementsystem.dto.user.UserUpdateRequest;
 import com.mistdays.taskmanagementsystem.entity.User;
 import com.mistdays.taskmanagementsystem.exception.UserNotFoundException;
 import com.mistdays.taskmanagementsystem.repository.UserRepository;

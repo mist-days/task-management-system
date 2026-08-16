@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import com.mistdays.taskmanagementsystem.dto.UserCreateRequest;
-import com.mistdays.taskmanagementsystem.dto.UserResponse;
-import com.mistdays.taskmanagementsystem.dto.UserUpdateRequest;
+import com.mistdays.taskmanagementsystem.dto.user.UserCreateRequest;
+import com.mistdays.taskmanagementsystem.dto.user.UserResponse;
+import com.mistdays.taskmanagementsystem.dto.user.UserUpdateRequest;
 
 import jakarta.validation.Valid;
 

@@ -1,4 +1,4 @@
-package com.mistdays.taskmanagementsystem.dto;
+package com.mistdays.taskmanagementsystem.dto.task;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,6 @@
 package com.mistdays.taskmanagementsystem.mapper;
 
-import com.mistdays.taskmanagementsystem.dto.UserResponse;
+import com.mistdays.taskmanagementsystem.dto.user.UserResponse;
 import com.mistdays.taskmanagementsystem.entity.User;
 
 public class UserMapper {

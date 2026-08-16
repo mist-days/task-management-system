@@ -1,8 +1,8 @@
 package com.mistdays.taskmanagementsystem.controller;
 
-import com.mistdays.taskmanagementsystem.dto.TaskUpdateRequest;
-import com.mistdays.taskmanagementsystem.dto.TaskCreateRequest;
-import com.mistdays.taskmanagementsystem.dto.TaskResponse;
+import com.mistdays.taskmanagementsystem.dto.task.TaskUpdateRequest;
+import com.mistdays.taskmanagementsystem.dto.task.TaskCreateRequest;
+import com.mistdays.taskmanagementsystem.dto.task.TaskResponse;
 import com.mistdays.taskmanagementsystem.entity.Task;
 import com.mistdays.taskmanagementsystem.mapper.TaskMapper;
 import com.mistdays.taskmanagementsystem.service.TaskService;

@@ -1,7 +1,7 @@
 package com.mistdays.taskmanagementsystem.service;
 
-import com.mistdays.taskmanagementsystem.dto.TaskCreateRequest;
-import com.mistdays.taskmanagementsystem.dto.TaskUpdateRequest;
+import com.mistdays.taskmanagementsystem.dto.task.TaskCreateRequest;
+import com.mistdays.taskmanagementsystem.dto.task.TaskUpdateRequest;
 import com.mistdays.taskmanagementsystem.entity.Task;
 import com.mistdays.taskmanagementsystem.entity.User;
 import com.mistdays.taskmanagementsystem.exception.TaskNotFoundException;
