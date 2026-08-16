@@ -4,7 +4,7 @@ import com.mistdays.taskmanagementsystem.dto.task.TaskCreateRequest;
 import com.mistdays.taskmanagementsystem.dto.task.TaskUpdateRequest;
 import com.mistdays.taskmanagementsystem.entity.Task;
 import com.mistdays.taskmanagementsystem.entity.User;
-import com.mistdays.taskmanagementsystem.exception.TaskNotFoundException;
+import com.mistdays.taskmanagementsystem.exception.ResourceNotFoundException;
 import com.mistdays.taskmanagementsystem.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class TaskService {
 
     public Task findTaskById(Long id) {
         return taskRepository.findById(id)
-                .orElseThrow(() -> new TaskNotFoundException(id));
+                .orElseThrow(() -> new ResourceNotFoundException("Task", "id", id));
     }
 
     public Task updateTask(Long id, TaskUpdateRequest request) {

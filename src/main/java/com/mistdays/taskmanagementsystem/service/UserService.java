@@ -2,7 +2,7 @@ package com.mistdays.taskmanagementsystem.service;
 
 import com.mistdays.taskmanagementsystem.dto.user.UserUpdateRequest;
 import com.mistdays.taskmanagementsystem.entity.User;
-import com.mistdays.taskmanagementsystem.exception.UserNotFoundException;
+import com.mistdays.taskmanagementsystem.exception.ResourceNotFoundException;
 import com.mistdays.taskmanagementsystem.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class UserService {
 
     public User findUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
 
     public User updateUser(Long id, UserUpdateRequest request) {
